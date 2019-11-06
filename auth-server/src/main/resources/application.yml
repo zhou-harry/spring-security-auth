@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-security-auth-server
+  datasource:
+    url: jdbc:mysql://192.168.88.128:3306/harry?useUnicode=true&serverTimezone=CTT&characterEncoding=utf8&allowMultiQueries=true
+    username: harry
+    password: abcd1234
+  security:
+    user:
+      name: admin
+      password: 12345
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          client-id: harry-client-id
+          client-secret: harry-client-secret
+  redis:
+    host: 192.168.88.128
+    port: 6379
+mybatis:
+  mapper-locations: classpath:/META-INF/mappings/*.xml
+  config-location: classpath:/META-INF/mybatis-config.xml
