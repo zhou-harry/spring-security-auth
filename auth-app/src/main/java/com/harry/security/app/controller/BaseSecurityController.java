@@ -23,28 +23,11 @@ import java.io.IOException;
 @AllArgsConstructor
 public class BaseSecurityController {
 
-    //拿到引发跳转的请求(HttpSessionRequestCache把当前的请求缓存到Session中)
-    private final RequestCache requestCache = new HttpSessionRequestCache();
-
-    private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
-
-    private final SecurityProperties securityProperties;
-
     //当需要身份认证时，跳转到这里
     @RequestMapping(SecurityConstants.DEFAULT_AUTH_REQUIRE)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED) //不是html请求时，返回401状态码
     public BaseSecurityResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //之前缓存的请求（可以拿到引发跳转的请求）
-        SavedRequest savedRequest = requestCache.getRequest(request, response);
-        if (savedRequest != null) {
-            String targetUrl = savedRequest.getRedirectUrl();
-            //是否以.html结尾，如果是则跳转到登录页面
-            if (StringUtils.endsWithIgnoreCase(targetUrl, ".html")) {
-                //这个url，用到**Properties 配置文件类来做灵活性配置
-                redirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getSignInUrl());
-            }
-        }
-        return new BaseSecurityResponse("访问的服务需要身份认证，请引导用户到登录页");
+        return new BaseSecurityResponse("访问的服务需要身份认证");
     }
 
 }

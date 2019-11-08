@@ -29,15 +29,10 @@ public class BaseAuthroizeConfigProvider implements AuthorizeConfigProvider {
                 .antMatchers(SecurityConstants.MATCHERS).permitAll()
                 .antMatchers(securityProperties.getBrowser().getPermitUrl()).permitAll()
                 .antMatchers(
-                        securityProperties.getBrowser().getSignInUrl(),
-                        securityProperties.getBrowser().getSignUpUrl(),
+                        securityProperties.getBrowser().getAuthRequire(),
                         securityProperties.getBrowser().getSigninProcessUrlForm(),
                         securityProperties.getBrowser().getSigninProcessUrlMobile(),
-                        securityProperties.getBrowser().getSigninProcessUrlOpenId(),
-                        securityProperties.getBrowser().getSigninProcessUrlMobile(),
-                        securityProperties.getBrowser().getSession().getSessionInvalidUrl(),
-                        securityProperties.getBrowser().getAuthRequire(),
-                        securityProperties.getBrowser().getLogoutPage()
+                        securityProperties.getBrowser().getSigninProcessUrlOpenId()
                 ).permitAll()
         ;
     }

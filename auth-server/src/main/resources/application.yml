@@ -22,3 +22,14 @@ spring:
 mybatis:
   mapper-locations: classpath:/META-INF/mappings/*.xml
   config-location: classpath:/META-INF/mybatis-config.xml
+
+harry:
+  security:
+    social:
+      open: true
+      qq:
+        app-id: 101575121
+        app-secret: a98ba0e8b2f4e5ef53484a9e0e474360
+      weixin:
+        app-id: wx7fdc8fedf501f527
+        app-secret: 17d1054662a2f839c6acf6148bb5047e
