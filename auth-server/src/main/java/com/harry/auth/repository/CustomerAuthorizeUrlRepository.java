@@ -22,7 +22,7 @@ public class CustomerAuthorizeUrlRepository implements AuthorizeUrlRepository {
         // TODO: 2019/5/25  从数据库查询用户所拥有权限的所有url
         Set<String> urls=new HashSet<>();
         urls.add("/index.html");
-        urls.add("/user/*");
+        urls.add("/base/*");
 
         return urls;
     }

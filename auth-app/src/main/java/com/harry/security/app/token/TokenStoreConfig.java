@@ -24,43 +24,29 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 public class TokenStoreConfig {
 
     @Autowired
-    private RedisConnectionFactory redisConnectionFactory;
+    private SecurityProperties securityProperties;
 
+    /**
+     * 转换器，设置jwt密签key
+     *
+     * @return
+     */
     @Bean
-    @ConditionalOnProperty(prefix = "harry.security.oauth2", name = "storeType", havingValue = "redis")
-    public TokenStore redisTokenStore() {
-        return new RedisTokenStore(redisConnectionFactory);
+    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        converter.setSigningKey(securityProperties.getOauth2().getSigningKey());
+        return converter;
     }
 
-    @Configuration
-    @ConditionalOnProperty(prefix = "harry.security.oauth2", name = "storeType", havingValue = "jwt", matchIfMissing = true)
-    public class JwtTokenConfig {
+    @Bean
+    public TokenStore jwtTokenStore() {
+        return new JwtTokenStore(jwtAccessTokenConverter());
+    }
 
-        @Autowired
-        private SecurityProperties securityProperties;
-
-        /**
-         * 转换器，设置jwt密签key
-         *
-         * @return
-         */
-        @Bean
-        public JwtAccessTokenConverter jwtAccessTokenConverter() {
-            JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-            converter.setSigningKey(securityProperties.getOauth2().getSigningKey());
-            return converter;
-        }
-
-        @Bean
-        public TokenStore jwtTokenStore() {
-            return new JwtTokenStore(jwtAccessTokenConverter());
-        }
-
-        @Bean
-        @ConditionalOnMissingBean(name = "jwtTokenEnhancer")
-        public TokenEnhancer jwtTokenEnhancer() {
-            return new CustomerTokenEnhancer(securityProperties);
-        }
+    @Bean
+    @ConditionalOnMissingBean(name = "jwtTokenEnhancer")
+    public TokenEnhancer jwtTokenEnhancer() {
+        return new CustomerTokenEnhancer(securityProperties);
     }
 
 }

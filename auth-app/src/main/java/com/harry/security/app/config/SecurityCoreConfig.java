@@ -23,7 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @ComponentScan({"com.harry.security.app"})
-public class AppSecurityBeanConfig {
+public class SecurityCoreConfig {
 
     @Autowired
     private RedisTemplate redisTemplate;

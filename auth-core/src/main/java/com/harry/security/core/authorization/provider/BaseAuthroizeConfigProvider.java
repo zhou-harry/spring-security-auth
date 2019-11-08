@@ -36,7 +36,7 @@ public class BaseAuthroizeConfigProvider implements AuthorizeConfigProvider {
                         securityProperties.getBrowser().getSigninProcessUrlOpenId(),
                         securityProperties.getBrowser().getSigninProcessUrlMobile(),
                         securityProperties.getBrowser().getSession().getSessionInvalidUrl(),
-                        securityProperties.getBrowser().getLoginPage(),
+                        securityProperties.getBrowser().getAuthRequire(),
                         securityProperties.getBrowser().getLogoutPage()
                 ).permitAll()
         ;

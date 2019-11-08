@@ -2,6 +2,7 @@ package com.harry.security.app.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,22 +30,25 @@ import java.util.List;
  */
 @Configuration
 @EnableAuthorizationServer
-public class AppAuthServerConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
     private DataSource dataSource;
     @Autowired
-    private TokenStore tokenStore;
-    @Autowired
     private UserDetailsService userDetailsService;
-    @Autowired(required = false)
-    private JwtAccessTokenConverter jwtAccessTokenConverter;
-    @Autowired(required = false)
-    private TokenEnhancer jwtTokenEnhancer;
+    private final TokenStore tokenStore;
+    private final JwtAccessTokenConverter jwtAccessTokenConverter;
+    private final TokenEnhancer jwtTokenEnhancer;
+
+    public AuthorizationServerConfig(TokenStore tokenStore, JwtAccessTokenConverter jwtAccessTokenConverter, TokenEnhancer jwtTokenEnhancer) {
+        this.tokenStore = tokenStore;
+        this.jwtAccessTokenConverter=jwtAccessTokenConverter;
+        this.jwtTokenEnhancer=jwtTokenEnhancer;
+    }
 
 
     @Override

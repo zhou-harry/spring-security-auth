@@ -12,7 +12,7 @@ import com.harry.security.core.constant.SecurityConstants;
 public class BrowserProperties {
 
     //表单身份认证地址
-    private String loginPage = SecurityConstants.DEFAULT_LOGIN_PAGE;
+    private String authRequire = SecurityConstants.DEFAULT_AUTH_REQUIRE;
     //账号退出地址
     private String logoutPage = SecurityConstants.DEFAULT_LOGOUT_PAGE;
     //用户名密码登录请求处理url
@@ -82,12 +82,12 @@ public class BrowserProperties {
         this.session = session;
     }
 
-    public String getLoginPage() {
-        return loginPage;
+    public String getAuthRequire() {
+        return authRequire;
     }
 
-    public void setLoginPage(String loginPage) {
-        this.loginPage = loginPage;
+    public void setAuthRequire(String authRequire) {
+        this.authRequire = authRequire;
     }
 
     public String getLogoutPage() {

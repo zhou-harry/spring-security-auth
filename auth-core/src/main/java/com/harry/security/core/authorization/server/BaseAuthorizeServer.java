@@ -38,13 +38,8 @@ public class BaseAuthorizeServer implements AuthorizeServer {
             return hasPermission;
         }
         Set<String> urls =null;
-        if (principle instanceof UserDetails) {
-            //Web端认证后端用户信息格式
-            UserDetails userDetails = (UserDetails) principle;
-            String username = userDetails.getUsername();
-            urls = authorizeUrlRepository.loadUrlByUsername(username);
-        }else if(principle instanceof String){
-            //App端认证后的用户信息格式
+        //App端认证后的用户信息格式
+        if(principle instanceof String){
             urls = authorizeUrlRepository.loadUrlByUsername(principle.toString());
         }
         if (urls == null) {

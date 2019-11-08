@@ -27,7 +27,7 @@ import org.springframework.social.security.SpringSocialConfigurer;
  */
 @Configuration
 @EnableResourceServer
-public class AppResourceServerConfig extends ResourceServerConfigurerAdapter {
+public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -64,7 +64,7 @@ public class AppResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .apply(validateCodeSecurityConfig).and()//自定义验证码过滤器
                 .apply(smsCodeAuthenticationConfig).and()//手机号认证配置
                 .formLogin()
-                .loginPage(securityProperties.getBrowser().getLoginPage())
+                .loginPage(securityProperties.getBrowser().getAuthRequire())
                 .loginProcessingUrl(securityProperties.getBrowser().getSigninProcessUrlForm())
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)

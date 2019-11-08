@@ -55,7 +55,7 @@ public class SecurityConstants {
     /**
      * 默认表单身份认证地址
      */
-    public final static String DEFAULT_LOGIN_PAGE = "/auth/require";
+    public final static String DEFAULT_AUTH_REQUIRE = "/auth/require";
     /**
      * 默认退出url
      */
@@ -136,7 +136,7 @@ public class SecurityConstants {
     public final static String[] MATCHERS = {
             BASE_ERROR,
             BASE_SSO_LOGIN,
-            DEFAULT_LOGIN_PAGE,
+            DEFAULT_AUTH_REQUIRE,
             DEFAULT_SIGNIN_PROCESS_URL_MOBILE,
             DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
             BASE_OAUTH2_AUTHORIZE
