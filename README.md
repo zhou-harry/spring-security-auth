@@ -21,6 +21,23 @@ CREATE TABLE `oauth_client_details` (
 INSERT INTO oauth_client_details (client_id, client_secret, scope, authorized_grant_types, web_server_redirect_uri, autoapprove)
 VALUES ('harry-client-id', '$2a$10$PFDpz98K3ROeSVImLkGhbe48OvF9oIvsheiPRzakIOzRs9nA3fjai', 'user_info', 'authorization_code,refresh_token', 'http://localhost:8083/login', 'user_info');
 ```
+第三方社交授权表:
+```sql
+create table t_UserConnection (userId varchar(255) not null,
+ providerId varchar(255) not null,
+ providerUserId varchar(255),
+`rank` int not null,
+ displayName varchar(255),
+ profileUrl varchar(512),
+ imageUrl varchar(512),
+ accessToken varchar(512) not null,
+ secret varchar(512),
+ refreshToken varchar(512),
+ expireTime bigint,
+ primary key (userId, providerId, providerUserId));
+create unique index UserConnectionRank on t_UserConnection(userId, providerId, `rank`);
+```
+
 授权码访问路径：
 ```sh
 http://localhost/oauth/authorize?
