@@ -48,7 +48,7 @@ public class RedisValidateCodeRepository implements ValidateCodeRepository {
     private String getRedisKey(ServletWebRequest request, ValidateCodeTypeEnum codeType) {
         String deviceId = AuthUtil.getDeviceId(request);
         StringBuilder buff = new StringBuilder(VALIDATECODE_REDISKEY_PREFIX);
-        buff.append(codeType).append(":").append(deviceId);
+        buff.append(codeType.getSessionKey()).append(":").append(deviceId);
         return buff.toString();
     }
 
