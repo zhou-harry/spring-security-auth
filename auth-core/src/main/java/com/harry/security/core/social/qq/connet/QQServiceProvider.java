@@ -1,5 +1,8 @@
 package com.harry.security.core.social.qq.connet;
 
+import static com.harry.security.core.constant.SecurityConstants.URL_ACCESSTOKEN;
+import static com.harry.security.core.constant.SecurityConstants.URL_AUTHORIZE;
+
 import com.harry.security.core.social.qq.api.QQ;
 import com.harry.security.core.social.qq.api.QQImpl;
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
@@ -15,11 +18,6 @@ import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
  * @date 2019/5/12 15:38
  */
 public class QQServiceProvider extends AbstractOAuth2ServiceProvider<QQ> {
-
-    //获取QQ授权码地址
-    private static final String URL_AUTHORIZE = "https://graph.qq.com/oauth2.0/authorize";
-    //获取QQ Token地址
-    private static final String URL_ACCESSTOKEN = "https://graph.qq.com/oauth2.0/token";
 
     private String appId;
 

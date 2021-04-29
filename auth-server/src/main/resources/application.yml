@@ -4,9 +4,9 @@ spring:
   application:
     name: spring-security-auth-server
   datasource:
-    url: jdbc:mysql://192.168.88.128:3306/harry?useUnicode=true&serverTimezone=CTT&characterEncoding=utf8&allowMultiQueries=true
-    username: harry
-    password: abcd1234
+    url: jdbc:mysql://192.168.64.128:3306/harry?useUnicode=true&serverTimezone=CTT&characterEncoding=utf8&allowMultiQueries=true
+    username: root
+    password: Abcd-1234
   security:
     user:
       name: admin
@@ -17,7 +17,7 @@ spring:
           client-id: harry-client-id
           client-secret: harry-client-secret
   redis:
-    host: 192.168.88.128
+    host: 192.168.64.128
     port: 6379
 mybatis:
   mapper-locations: classpath:/META-INF/mappings/*.xml

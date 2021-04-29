@@ -102,6 +102,15 @@ public class SecurityConstants {
      */
     public static final String BASE_SSO_LOGIN = "/login";
 
+    //获取QQ 授权码地址
+    public static final String URL_AUTHORIZE = "https://graph.qq.com/oauth2.0/authorize";
+    //获取QQ Token地址
+    public static final String URL_ACCESSTOKEN = "https://graph.qq.com/oauth2.0/token";
+    //获取QQ OPENID地址
+    public static final String URL_GET_OPENID = "https://graph.qq.com/oauth2.0/me?access_token=%s";
+    //获取QQ 用户信息地址
+    public static final String URL_GET_USERINFO = "https://graph.qq.com/user/get_user_info?&oauth_consumer_key=%s&openid=%s";
+
     public final static String[] MATCHERS = {
             BASE_SSO_LOGIN,
             DEFAULT_AUTH_REQUIRE,
