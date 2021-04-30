@@ -38,7 +38,7 @@ create table t_UserConnection (userId varchar(255) not null,
 create unique index UserConnectionRank on t_UserConnection(userId, providerId, `rank`);
 ```
 
-授权码访问路径：
+授权码访问路径：   `AuthorizationEndpoint`
 ```sh
 http://localhost/oauth/authorize?
 response_type=code
@@ -46,7 +46,7 @@ response_type=code
 &scope=user_info
 &redirect_uri=http://localhost:8083/login
 ```
-授权码模式获取Token
+授权码模式获取Token `TokenEndpoint`
 ```sh
 http://localhost/oauth/token?
 grant_type=authorization_code
